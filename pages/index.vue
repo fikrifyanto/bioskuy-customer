@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import BottomNavigation from "~/components/BottomNavigation.vue";
+import type {DropdownMenuItem} from '@nuxt/ui'
 
 const config = useRuntimeConfig()
+const {loggedIn, clear} = useUserSession();
 
 const banners = [
   'https://media.21cineplex.com/webcontent/gallery/pictures/174332714933197_925x527.jpg',
@@ -17,12 +19,47 @@ const {data} = await useFetch<ApiResponse<Pagination<Movie[]>>>(
 )
 
 const movies = computed(() => data.value?.data?.content)
+
+const items = ref<DropdownMenuItem[]>([
+  {
+    label: 'Profile',
+    icon: 'i-lucide-user'
+  },
+  {
+    label: 'Logout',
+    icon: 'i-heroicons-arrow-left-start-on-rectangle',
+    onSelect: () => {
+      logout();
+    },
+  }
+])
+
+function logout() {
+  clear();
+  navigateTo('/login');
+}
 </script>
 
 <template>
   <div class="flex items-center justify-between text-slate-200 my-4 px-4">
     <NuxtImg width="120" src="https://bioskuy.vercel.app/bioskuy!.png" alt="Bioskuy!"/>
-    <UAvatar src="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=Jameson" size="lg" alt="Fikri"/>
+    <div>
+      <NuxtLink v-if="!loggedIn" to="/login" class="text-primary font-semibold">Login</NuxtLink>
+      <UDropdownMenu
+          v-else
+          :items="items"
+          :content="{
+            align: 'end',
+            side: 'bottom',
+            sideOffset: 8
+           }"
+          :ui="{
+            content: 'w-48'
+          }"
+      >
+        <UAvatar src="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=Jameson" size="lg" alt="Fikri"/>
+      </UDropdownMenu>
+    </div>
   </div>
   <div class="mb-11">
     <UCarousel

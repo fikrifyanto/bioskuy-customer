@@ -1,13 +1,17 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['authenticated'],
+})
+
 const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()
 const booking = useBooking()
 
-const scheduleId = route.params.id
+const scheduleId = computed(() => route.params.id)
 
 const {data: seatData} = await useFetch<ApiResponse<Seat[]>>(
-    `${config.public.apiBase}/seats/schedule/${scheduleId}`
+    `${config.public.apiBase}/seats/schedule/${scheduleId.value}`
 )
 
 const seats = computed(() => seatData.value?.data || [])
@@ -30,7 +34,8 @@ function isSeatActive(seatId: number) {
 }
 
 onMounted(() => {
-  booking.scheduleId = scheduleId as string
+  booking.seatIds = []
+  booking.scheduleId = scheduleId.value as string
 })
 </script>
 
@@ -51,15 +56,30 @@ onMounted(() => {
       <div class="grid grid-cols-2 overflow-scroll gap-80">
         <div class="w-[calc(48px*6)] grid grid-cols-6 gap-2">
           <template v-for="seat in leftSeats" :key="seat.id">
-            <UButton :active="isSeatActive(seat.id)" @click="toggleSeat(seat.id)" active-variant="solid"
-                     variant="outline" class="size-10">{{ seat.seatNumber }}
+            <UButton
+                :active="isSeatActive(seat.id)"
+                @click="toggleSeat(seat.id)"
+                active-variant="solid"
+                :variant="seat.status == 'RESERVED' ? 'soft' : 'outline'"
+                :color="seat.status == 'RESERVED' ? 'warning' : 'primary'"
+                class="size-10"
+                :disabled="seat.status == 'RESERVED'"
+            >
+              {{ seat.seatNumber }}
             </UButton>
           </template>
         </div>
         <div class="w-[calc(48px*6)] grid grid-cols-6 gap-2">
           <template v-for="seat in rightSeats" :key="seat.id">
-            <UButton :active="isSeatActive(seat.id)" @click="toggleSeat(seat.id)" active-variant="solid"
-                     variant="outline" class="size-10">{{ seat.seatNumber }}
+            <UButton
+                :active="isSeatActive(seat.id)"
+                @click="toggleSeat(seat.id)"
+                active-variant="solid"
+                :variant="seat.status == 'RESERVED' ? 'solid' : 'outline'"
+                class="size-10"
+                :disabled="seat.status == 'RESERVED'"
+            >
+              {{ seat.seatNumber }}
             </UButton>
           </template>
         </div>
@@ -68,7 +88,13 @@ onMounted(() => {
   </div>
 
   <UCard variant="subtle" class="fixed bottom-0 max-w-md max-h-24 w-full rounded-b-none">
-    <UButton :loading="booking.loading" @click="booking.createBooking()" size="xl" block>Bayar</UButton>
+    <UButton
+        :disabled="!booking.scheduleId || !booking.seatIds"
+        :loading="booking.loading"
+        @click="booking.createBooking()" size="xl" block
+    >
+      Bayar
+    </UButton>
   </UCard>
 </template>
 
