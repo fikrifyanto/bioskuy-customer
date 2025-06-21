@@ -4,6 +4,7 @@ export default defineEventHandler(async (event) => {
     const {email, password} = await readBody(event)
 
     try {
+        console.log('Login:' + email + ' ' + password)
         const loginResponse = await $fetch<ApiResponse<LoginResponse>>(`${config.public.apiBase}/users/login`, {
             method: 'POST',
             body: {email, password},
