@@ -23,7 +23,8 @@ export default defineEventHandler(async (event) => {
             accessToken: `${tokenType} ${token}`,
         })
     } catch (error: any) {
-        console.log(error)
+        console.log('Login error:' + error)
+        console.log('Login error credential:' + email + ' ' + password)
         if (error.response && typeof error.response.status === 'number') {
             if (error.response.status === 401) {
                 throw createError({statusCode: 401, message: 'Username atau password salah.'})
