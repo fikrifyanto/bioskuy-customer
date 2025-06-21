@@ -12,10 +12,8 @@ export default defineEventHandler(async (event) => {
         }
     })
 
-    const {token, tokenType, customer} = loginResponse.data
-
     await setUserSession(event, {
-        user: customer,
-        accessToken: `${tokenType} ${token}`,
+        user: loginResponse.data?.customer,
+        accessToken: `${loginResponse.data?.tokenType} ${loginResponse.data?.token}`,
     })
 })
