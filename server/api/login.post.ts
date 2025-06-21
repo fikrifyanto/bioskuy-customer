@@ -13,7 +13,10 @@ export default defineEventHandler(async (event) => {
     try {
         const loginResponse = await $fetch<ApiResponse<LoginResponse>>(`${config.public.apiBase}/users/login`, {
             method: 'POST',
-            body: {email, password}
+            body: {email, password},
+            headers: {
+                'Content-Type': 'application/json',
+            }
         })
 
         const { token, tokenType, customer } = loginResponse.data
