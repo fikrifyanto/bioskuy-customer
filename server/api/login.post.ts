@@ -1,14 +1,7 @@
-import {z} from 'zod'
-
 const config = useRuntimeConfig()
 
-const bodySchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(8)
-})
-
 export default defineEventHandler(async (event) => {
-    const {email, password} = await readValidatedBody(event, bodySchema.parse)
+    const {email, password} = await readBody(event)
 
     try {
         const loginResponse = await $fetch<ApiResponse<LoginResponse>>(`${config.public.apiBase}/users/login`, {
