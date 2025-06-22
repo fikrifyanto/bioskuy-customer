@@ -11,6 +11,7 @@
     --ui-text: var(--ui-color-neutral-400);
     --ui-text-highlighted: var(--ui-primary);
     --ui-text-inverted: var(--color-white);
+    --ui-bg-elevated: var(--ui-color-neutral-800);
 }
 
 .dark {
@@ -23,4 +24,5 @@
     --ui-text: var(--ui-color-neutral-400);
     --ui-text-highlighted: var(--ui-primary);
     --ui-text-inverted: var(--color-white);
+    --ui-bg-elevated: var(--ui-color-neutral-800);
 }

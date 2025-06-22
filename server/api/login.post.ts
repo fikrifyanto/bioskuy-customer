@@ -3,8 +3,8 @@ import {z} from 'zod'
 const config = useRuntimeConfig()
 
 const bodySchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(8)
+    email: z.string().email('Email tidak sesuai'),
+    password: z.string().min(8, 'Minimal 8 karakter')
 })
 
 export default defineEventHandler(async (event) => {

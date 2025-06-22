@@ -23,7 +23,8 @@ const movies = computed(() => data.value?.data?.content)
 const items = ref<DropdownMenuItem[]>([
   {
     label: 'Profile',
-    icon: 'i-lucide-user'
+    icon: 'i-lucide-user',
+    to: '/profile',
   },
   {
     label: 'Logout',
