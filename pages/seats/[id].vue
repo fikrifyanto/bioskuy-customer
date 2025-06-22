@@ -54,7 +54,7 @@ onMounted(() => {
     </UCard>
     <UCard>
       <div class="grid grid-cols-2 overflow-scroll gap-80">
-        <div class="w-[calc(48px*6)] text-sm grid grid-cols-6 gap-2">
+        <div class="w-[calc(48px*6)] text-sm text-center grid grid-cols-6 gap-2">
           <template v-for="seat in leftSeats" :key="seat.id">
             <UButton
                 :active="isSeatActive(seat.id)"
@@ -69,7 +69,7 @@ onMounted(() => {
             </UButton>
           </template>
         </div>
-        <div class="w-[calc(48px*6)] text-sm grid grid-cols-6 gap-2">
+        <div class="w-[calc(48px*6)] text-sm text-center grid grid-cols-6 gap-2">
           <template v-for="seat in rightSeats" :key="seat.id">
             <UButton
                 :active="isSeatActive(seat.id)"
