@@ -4,6 +4,7 @@
 :root {
     --ui-primary: #BB2827;
 
+    --ui-bg: var(--ui-color-neutral-900);
     --ui-text-dimmed: var(--ui-color-neutral-400);
     --ui-text-muted: var(--ui-color-neutral-500);
     --ui-text-toned: var(--ui-color-neutral-600);
@@ -14,4 +15,12 @@
 
 .dark {
     --ui-primary: #BB2827;
+
+    --ui-bg: var(--ui-color-neutral-900);
+    --ui-text-dimmed: var(--ui-color-neutral-400);
+    --ui-text-muted: var(--ui-color-neutral-500);
+    --ui-text-toned: var(--ui-color-neutral-600);
+    --ui-text: var(--ui-color-neutral-400);
+    --ui-text-highlighted: var(--ui-primary);
+    --ui-text-inverted: var(--color-white);
 }
