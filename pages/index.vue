@@ -94,8 +94,12 @@ function logout() {
     >
       <NuxtImg :src="item.image" width="320" height="320" class="rounded-lg"/>
       <div class="flex items-center justify-center gap-2">
-        <Icon class="text-yellow-500" size="24" name="i-heroicons-solid-star"/>
-        <h1 class="text-white text-center my-3">{{ item.title }}</h1>
+        <div class="flex items-center text-white">
+          <Icon class="text-yellow-500" size="24" name="i-heroicons-solid-star"/>
+          {{ item.rating }}
+        </div>
+        |
+        <h1 class="text-white text-center font-semibold my-3">{{ item.title }}</h1>
       </div>
       <NuxtLink :to="`/movies/${item.id}`">
         <UButton icon="i-heroicons-ticket" size="xl" :block="true">Pesan</UButton>

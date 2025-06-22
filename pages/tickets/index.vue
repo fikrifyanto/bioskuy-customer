@@ -16,6 +16,12 @@ const bookings = computed(() => data.value?.data)
 </script>
 
 <template>
+  <div class="grid grid-cols-3 items-center text-slate-200 py-4 px-4 ring ring-default">
+    <div></div>
+    <h1 class="text-center text-xl font-semibold">Tiket</h1>
+    <div></div>
+  </div>
+
   <template v-if="bookings?.length">
     <div class="flex flex-col gap-4 p-4">
       <UCard v-for="booking in bookings">

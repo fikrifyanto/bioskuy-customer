@@ -30,6 +30,12 @@ watch(keyword, async (newKeyword) => {
 </script>
 
 <template>
+  <div class="grid grid-cols-3 items-center text-slate-200 py-4 px-4 ring ring-default">
+    <div></div>
+    <h1 class="text-center text-xl font-semibold">Cari Film</h1>
+    <div></div>
+  </div>
+
   <div class="p-4">
     <UInput
         autofocus
