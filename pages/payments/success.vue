@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const orderId = route.query.order_d as string
+const orderId = route.query.order_id as string
 
 const count = ref(6)
 
