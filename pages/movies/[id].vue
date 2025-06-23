@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: 'Detail Film - Bioskuy!',
+})
+
 const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()

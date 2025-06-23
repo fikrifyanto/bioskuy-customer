@@ -2,6 +2,10 @@
 import BottomNavigation from "~/components/BottomNavigation.vue";
 import type {DropdownMenuItem} from '@nuxt/ui'
 
+useHead({
+  title: 'Beranda - Bioskuy!',
+})
+
 const config = useRuntimeConfig()
 const {loggedIn, clear} = useUserSession();
 

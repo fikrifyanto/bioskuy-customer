@@ -3,6 +3,10 @@ definePageMeta({
   middleware: ['authenticated'],
 })
 
+useHead({
+  title: 'Pilih Kursi - Bioskuy!',
+})
+
 const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()

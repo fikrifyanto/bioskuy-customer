@@ -25,4 +25,15 @@ export default defineNuxtConfig({
         }
     },
     ssr: false,
+    app: {
+        head: {
+            title: 'Bioskuy!',
+            meta: [
+                { name: 'description', content: 'Pesan tiket nonton tanpa antri!' }
+            ],
+            link: [
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+            ]
+        }
+    }
 })

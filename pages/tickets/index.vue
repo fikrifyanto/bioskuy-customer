@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: 'Tiket - Bioskuy!',
+})
+
 const config = useRuntimeConfig()
 const {session} = useUserSession()
 

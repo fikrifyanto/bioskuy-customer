@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import * as z from "zod";
 
+useHead({
+  title: 'Profil - Bioskuy!',
+})
+
 const route = useRoute()
 const router = useRouter()
 const toast = useToast()

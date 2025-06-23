@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import * as z from 'zod'
 
+useHead({
+  title: 'Login - Bioskuy!',
+})
+
 const route = useRoute()
 const toast = useToast()
 const {fetch: refreshSession} = useUserSession()

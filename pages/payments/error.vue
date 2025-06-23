@@ -1,5 +1,7 @@
 <script setup lang="ts">
-
+useHead({
+  title: 'Pembayaran Gagal! - Bioskuy!',
+})
 </script>
 
 <template>

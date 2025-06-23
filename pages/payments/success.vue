@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: 'Pembayaran Berhasil! - Bioskuy!',
+})
+
 const route = useRoute()
 
 const orderId = route.query.order_id as string

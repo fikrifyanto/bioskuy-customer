@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: 'Cari Film - Bioskuy!',
+})
+
 const config = useRuntimeConfig()
 const toast = useToast()
 
