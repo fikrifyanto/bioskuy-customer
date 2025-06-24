@@ -79,7 +79,8 @@ onMounted(() => {
                 :active="isSeatActive(seat.id)"
                 @click="toggleSeat(seat.id)"
                 active-variant="solid"
-                :variant="seat.status == 'RESERVED' ? 'solid' : 'outline'"
+                :variant="seat.status == 'RESERVED' ? 'soft' : 'outline'"
+                :color="seat.status == 'RESERVED' ? 'warning' : 'primary'"
                 class="size-10"
                 :disabled="seat.status == 'RESERVED'"
             >
