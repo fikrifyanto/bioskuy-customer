@@ -34,7 +34,7 @@ async function onSubmit() {
         await login()
       })
       .catch((error: any) => {
-        if(error?.data?.message) {
+        if (error?.data?.message) {
           toast.add({title: 'Gagal', description: error?.data?.message, color: 'error'})
         } else {
           toast.add({title: 'Gagal', description: 'Terjadi kesalahan!', color: 'error'})
@@ -53,7 +53,7 @@ async function login() {
         await navigateTo(redirect.value)
       })
       .catch((error: any) => {
-        if(error?.data?.message) {
+        if (error?.data?.message) {
           toast.add({title: 'Gagal', description: error?.data?.message, color: 'error'})
         } else {
           toast.add({title: 'Gagal', description: 'Terjadi kesalahan!', color: 'error'})
@@ -79,10 +79,12 @@ async function login() {
       </UFormField>
 
       <UButton block size="xl" type="submit">
-        Login
+        Buat Akun
       </UButton>
 
-      <p class="text-center text-sm mt-3">Sudah punya akun? <NuxtLink class="text-primary font-semibold" to="/login">Login</NuxtLink></p>
+      <p class="text-center text-sm mt-3">Sudah punya akun?
+        <NuxtLink class="text-primary font-semibold" to="/login">Login</NuxtLink>
+      </p>
     </UForm>
   </div>
 </template>
