@@ -4,7 +4,6 @@ useHead({
 })
 
 const route = useRoute()
-const router = useRouter()
 const config = useRuntimeConfig()
 const {session} = useUserSession()
 
@@ -33,9 +32,9 @@ const {data: booking} = await useFetch<ApiResponse<Booking>>(
 
 <template>
   <div class="grid grid-cols-3 items-center text-slate-200 py-4 px-4 ring ring-default">
-    <div @click="router.back()">
+    <NuxtLink to="/tickets">
       <UButton icon="i-heroicons-arrow-left" size="xl"/>
-    </div>
+    </NuxtLink>
     <h1 class="text-center text-xl font-semibold">Tiket</h1>
     <div></div>
   </div>
